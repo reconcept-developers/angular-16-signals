@@ -3,7 +3,8 @@ import { Component, computed, effect, Injector, signal } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  standalone: true
 })
 export class AppComponent {
   title = 'signals-basic';
@@ -23,7 +24,7 @@ export class AppComponent {
 
       effect(() => {
         this.counter();
-        
+
         this.counter.set(3);
 
 

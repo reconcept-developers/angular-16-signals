@@ -1,11 +1,18 @@
 import { Component, effect, inject } from '@angular/core';
 import { Todo, TodoSignal } from "./todo.signal";
+import { FormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [TodoSignal]
+  providers: [TodoSignal],
+  imports: [
+    FormsModule,
+    CommonModule
+  ],
+  standalone: true
 })
 export class AppComponent {
   title = 'signals-inject';
