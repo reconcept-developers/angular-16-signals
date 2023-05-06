@@ -32,4 +32,10 @@ export class TodoSignal {
       todo.done = true;
     })
   }
+
+  markUndone(todo: Todo) {
+    this.allTodos.mutate(() => {
+      todo.done = false;
+    })
+  }
 }

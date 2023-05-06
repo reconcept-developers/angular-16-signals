@@ -38,4 +38,8 @@ export class AppComponent {
   markDone(todo: Todo) {
     this.todoSignal.markDone(todo);
   }
+
+  markUndone(todo: Todo) {
+    this.todoSignal.markUndone(todo);
+  }
 }
