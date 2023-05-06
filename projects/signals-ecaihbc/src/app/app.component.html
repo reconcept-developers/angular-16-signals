@@ -1,0 +1,9 @@
+<main>
+  <h1>Signals Expression Changed</h1>
+
+  <section>
+
+    <normal-cd [parentNumber]="total" (tellParent)="addToParent($event)"></normal-cd>
+    <on-push [parentNumber]="total" (tellParent)="addToParent($event)"></on-push>
+  </section>
+</main>

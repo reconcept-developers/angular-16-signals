@@ -1,3 +1,15 @@
 <main>
- <h1>Signals Basics</h1>
+  <h1>Signals Basics</h1>
+
+  <section>
+    <div>Count: {{ counter() }}</div>
+    <div>Double: {{ double() }}</div>
+  </section>
+
+  <section class="row">
+    <button (click)="increment()">Increment</button>
+    <button (click)="decrement()">Decrement</button>
+    <button (click)="reset()">reset</button>
+  </section>
+
 </main>

@@ -1,3 +1,14 @@
 <main>
   <h1>Signals RxJS</h1>
+
+  <h2>Find a star wars ship</h2>
+  <input [(ngModel)]="ship"/>
+  <button (click)="find()">Find</button>
+
+  <h2> Results </h2>
+  <div *ngFor="let result of results()">
+    {{ result.name }}
+  </div>
+
+  <div *ngIf="hasNoResults()">No results</div>
 </main>
