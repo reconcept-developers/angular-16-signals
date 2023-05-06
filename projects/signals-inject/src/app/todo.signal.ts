@@ -1,4 +1,4 @@
-import {computed, Injectable, signal} from "@angular/core";
+import { computed, Injectable, signal } from "@angular/core";
 
 
 export interface Todo {
@@ -22,17 +22,14 @@ export class TodoSignal {
   })
 
   addTodo(todo: Todo) {
-    this.allTodos.mutate(todos => {
-      todos.push(todo)
-    })
+    this.allTodos.update(todos =>
+      [...todos, todo]
+    )
   }
 
   markDone(todo: Todo) {
-    this.allTodos.mutate((todos) => {
-      const todoToFinish = todos.find(t => t === todo);
-      if (todoToFinish) {
-        todoToFinish.done = true
-      }
+    this.allTodos.mutate(() => {
+      todo.done = true;
     })
   }
 }
