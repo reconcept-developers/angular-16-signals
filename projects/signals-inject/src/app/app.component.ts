@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { Todo, TodoSignal } from "./todo.signal";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
@@ -17,29 +17,29 @@ import { CommonModule } from "@angular/common";
 export class AppComponent {
   title = 'signals-inject';
 
-  todoSignal = inject(TodoSignal)
   newTodo!: string;
 
+  todos: Todo[] = []
+  doneTodos: Todo[] = []
+
   constructor() {
-    effect(() => {
-      // what to do here?
-    })
   }
 
   addTodo() {
-    this.todoSignal.addTodo({
-      label: this.newTodo,
-      done: false
-    })
-
     this.newTodo = '';
   }
 
   markDone(todo: Todo) {
-    this.todoSignal.markDone(todo);
+    todo.done = true;
+
+    this.todos = this.todos.filter(todo => !todo.done)
+    this.doneTodos.push(todo)
   }
 
   markUndone(todo: Todo) {
-    this.todoSignal.markUndone(todo);
+    todo.done = false;
+
+    this.doneTodos = this.doneTodos.filter(todo => todo.done)
+    this.todos.push(todo)
   }
 }

@@ -10,7 +10,7 @@
     <h2>Todo</h2>
 
     <ul>
-      <li *ngFor="let todo of todoSignal.todos()" (click)="markDone(todo)">
+      <li *ngFor="let todo of todos" (click)="markDone(todo)">
         {{ todo.label }}
       </li>
     </ul>
@@ -18,7 +18,7 @@
   <section>
     <h2>Done</h2>
     <ul>
-      <li *ngFor="let todo of todoSignal.doneTodos()" (click)="markUndone(todo)">
+      <li *ngFor="let todo of doneTodos" (click)="markUndone(todo)">
         {{ todo.label }}
       </li>
     </ul>
