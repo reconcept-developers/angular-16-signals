@@ -1,4 +1,4 @@
-import { Component, computed, effect, Injector, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -15,27 +15,12 @@ export class AppComponent {
     return this.counter() * 2;
   })
 
-  constructor(private injector: Injector) {
+  constructor() {
     effect(() => {
-      console.log('outer effect');
-
-      // const double = this.double();
-      // console.log(double);
-
-      effect(() => {
-        this.counter();
-
-        this.counter.set(3);
-
-
-        console.log('inner effect')
-      }, {
-        injector: this.injector,
-        allowSignalWrites: true
-      })
+      console.log('running effect');
+      console.log(`Counter value: ${this.counter()}`)
     })
   }
-
 
   increment() {
     this.counter.update(c => c + 1)
