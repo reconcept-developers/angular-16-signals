@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Todo, TodoSignal } from "./todo.signal";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
+import { TodoService } from "./todo.service";
+import { Subject, takeUntil } from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -22,24 +24,38 @@ export class AppComponent {
   todos: Todo[] = []
   doneTodos: Todo[] = []
 
+  todoService = inject(TodoService);
+
+  private destroyed$ = new Subject<void>();
+
   constructor() {
+    this.todoService.todos.pipe(takeUntil(this.destroyed$)).subscribe({
+      next: (todos) => this.todos = todos
+    })
+
+    this.todoService.doneTodos.pipe(takeUntil(this.destroyed$)).subscribe({
+      next: (todos) => this.doneTodos = todos
+    })
+  }
+
+  ngOnDestroy() {
+    this.destroyed$.next();
+    this.destroyed$.complete();
   }
 
   addTodo() {
+    this.todoService.addTodo({
+      label: this.newTodo,
+      done: false
+    })
     this.newTodo = '';
   }
 
   markDone(todo: Todo) {
-    todo.done = true;
-
-    this.todos = this.todos.filter(todo => !todo.done)
-    this.doneTodos.push(todo)
+    this.todoService.markDone(todo)
   }
 
   markUndone(todo: Todo) {
-    todo.done = false;
-
-    this.doneTodos = this.doneTodos.filter(todo => todo.done)
-    this.todos.push(todo)
+    this.todoService.markUndone(todo)
   }
 }

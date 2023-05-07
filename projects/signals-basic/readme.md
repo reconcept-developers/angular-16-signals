@@ -1,11 +1,11 @@
 # circular effects
 
-```
+```typescript
 effect(() => {
-console.log('first effect');
+  console.log('first effect');
 
   const mainCounter = this.counter();
-  
+
   this.counter.update(c => mainCounter + c);
 }, {
   allowSignalWrites: true
