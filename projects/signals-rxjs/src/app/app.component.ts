@@ -1,7 +1,5 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { map, switchMap } from "rxjs";
-import { toObservable, toSignal } from "@angular/core/rxjs-interop";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 
@@ -21,31 +19,14 @@ export class AppComponent {
   http = inject(HttpClient)
 
   shipQuery = signal('')
-  results = toSignal(
-    toObservable(this.shipQuery,).pipe( // needs to be here, for injection context
-      switchMap((ship) => {
-        const query = `?search=${ship}`
-        return this.http.get(`https://swapi.dev/api/starships/${query}`).pipe(
-          map((response: any) => response.results)
-        )
-      }),
-      // startWith([])
-    ),
-    {
-      initialValue: []
-    }
-  )
+  results = signal([])
 
   ship!: string;
 
   constructor() {
   }
 
-  hasNoResults = computed(() => {
-    return !this.results().length
-  })
 
   find() {
-    this.shipQuery.set(this.ship)
   }
 }
