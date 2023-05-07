@@ -12,9 +12,10 @@ export interface Todo {
 })
 export class TodoService {
 
-  allTodos = new BehaviorSubject<Todo[]>([])
-  allTodos$ = this.allTodos.asObservable();
+  private allTodos = new BehaviorSubject<Todo[]>([])
+  allTodos$ = this.allTodos.asObservable(); // only expose observable for encapsulations
 
+  // use pipe & map to show selections of the todos
   todos = this.allTodos$.pipe(map(todos => todos.filter(todo => !todo.done)))
   doneTodos = this.allTodos$.pipe(map(todos => todos.filter(todo => todo.done)))
 
@@ -25,12 +26,16 @@ export class TodoService {
 
   markDone(todo: Todo) {
     const currentTodos = this.allTodos.getValue();
+
+    // we need extra code to get the 'right' object from the list, to mark that as done
     this.updateInCurrent(todo, currentTodos, true);
     this.allTodos.next(currentTodos);
   }
 
   markUndone(todo: Todo) {
     const currentTodos = this.allTodos.getValue();
+
+    // we need extra code to get the 'right' object from the list, to mark that as undone
     this.updateInCurrent(todo, currentTodos, false);
     this.allTodos.next(currentTodos);
   }

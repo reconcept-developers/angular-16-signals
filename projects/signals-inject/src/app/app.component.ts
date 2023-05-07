@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { Todo, TodoSignal } from "./todo.signal";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
@@ -16,7 +16,7 @@ import { Subject, takeUntil } from "rxjs";
   ],
   standalone: true
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   newTodo!: string;
 
   todos: Todo[] = []
@@ -27,10 +27,12 @@ export class AppComponent {
   private destroyed$ = new Subject<void>();
 
   constructor() {
+    // we need to unsubscribe, when the component is removed
     this.todoService.todos.pipe(takeUntil(this.destroyed$)).subscribe({
       next: (todos) => this.todos = todos
     })
 
+    // we need to unsubscribe, when the component is removed
     this.todoService.doneTodos.pipe(takeUntil(this.destroyed$)).subscribe({
       next: (todos) => this.doneTodos = todos
     })
