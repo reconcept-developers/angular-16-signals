@@ -14,8 +14,6 @@ import { CommonModule } from "@angular/common";
   standalone: true
 })
 export class AppComponent {
-  title = 'signals-rxjs';
-
   http = inject(HttpClient)
 
   shipQuery = signal('')

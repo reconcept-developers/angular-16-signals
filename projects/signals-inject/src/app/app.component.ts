@@ -17,8 +17,6 @@ import { Subject, takeUntil } from "rxjs";
   standalone: true
 })
 export class AppComponent {
-  title = 'signals-inject';
-
   newTodo!: string;
 
   todos: Todo[] = []

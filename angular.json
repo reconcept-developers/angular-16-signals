@@ -100,34 +100,34 @@
         }
       }
     },
-    "signals-rxjs": {
+    "signals-to-from-rxjs": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/signals-rxjs",
-      "sourceRoot": "projects/signals-rxjs/src",
+      "root": "projects/signals-to-from-rxjs",
+      "sourceRoot": "projects/signals-to-from-rxjs/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
-            "outputPath": "dist/signals-rxjs",
-            "index": "projects/signals-rxjs/src/index.html",
-            "main": "projects/signals-rxjs/src/main.ts",
+            "outputPath": "dist/signals-to-from-rxjs",
+            "index": "projects/signals-to-from-rxjs/src/index.html",
+            "main": "projects/signals-to-from-rxjs/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "projects/signals-rxjs/tsconfig.app.json",
+            "tsConfig": "projects/signals-to-from-rxjs/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/signals-rxjs/src/favicon.ico",
-              "projects/signals-rxjs/src/assets"
+              "projects/signals-to-from-rxjs/src/favicon.ico",
+              "projects/signals-to-from-rxjs/src/assets"
             ],
             "styles": [
-              "projects/signals-rxjs/src/styles.scss"
+              "projects/signals-to-from-rxjs/src/styles.scss"
             ],
             "scripts": []
           },
@@ -162,10 +162,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "signals-rxjs:build:production"
+              "browserTarget": "signals-to-from-rxjs:build:production"
             },
             "development": {
-              "browserTarget": "signals-rxjs:build:development"
+              "browserTarget": "signals-to-from-rxjs:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -173,7 +173,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "signals-rxjs:build"
+            "browserTarget": "signals-to-from-rxjs:build"
           }
         },
         "test": {
@@ -183,14 +183,14 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "projects/signals-rxjs/tsconfig.spec.json",
+            "tsConfig": "projects/signals-to-from-rxjs/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/signals-rxjs/src/favicon.ico",
-              "projects/signals-rxjs/src/assets"
+              "projects/signals-to-from-rxjs/src/favicon.ico",
+              "projects/signals-to-from-rxjs/src/assets"
             ],
             "styles": [
-              "projects/signals-rxjs/src/styles.scss"
+              "projects/signals-to-from-rxjs/src/styles.scss"
             ],
             "scripts": []
           }
