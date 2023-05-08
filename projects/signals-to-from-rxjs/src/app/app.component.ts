@@ -4,6 +4,10 @@ import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { map } from "rxjs";
 
+interface SwShip {
+  name: string;
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -18,14 +22,13 @@ export class AppComponent {
   http = inject(HttpClient)
 
   shipQuery = signal('')
-  results = signal([])
+  results = signal<SwShip[]>([])
 
   ship!: string;
 
   constructor() {
   }
-
-
+  
   find() {
   }
 
