@@ -1,15 +1,14 @@
 import { Component, inject, OnDestroy } from '@angular/core';
-import { Todo, TodoSignal } from "./todo.signal";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
-import { TodoService } from "./todo.service";
+import { Todo, TodoService } from "./todo.service";
 import { Subject, takeUntil } from "rxjs";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [TodoSignal],
+  providers: [TodoService],
   imports: [
     FormsModule,
     CommonModule

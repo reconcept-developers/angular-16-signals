@@ -7,9 +7,7 @@ export interface Todo {
   done: boolean;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TodoService {
 
   private allTodos = new BehaviorSubject<Todo[]>([])
