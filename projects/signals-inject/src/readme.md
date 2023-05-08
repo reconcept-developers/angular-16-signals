@@ -1,3 +1,4 @@
+```typescript
 import { computed, Injectable, signal } from "@angular/core";
 
 
@@ -39,3 +40,5 @@ export class TodoSignal {
     })
   }
 }
+
+```
