@@ -100,34 +100,34 @@
         }
       }
     },
-    "signals-to-from-rxjs": {
+    "signals-swapi": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "projects/signals-to-from-rxjs",
-      "sourceRoot": "projects/signals-to-from-rxjs/src",
+      "root": "projects/signals-swapi",
+      "sourceRoot": "projects/signals-swapi/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser-esbuild",
           "options": {
-            "outputPath": "dist/signals-to-from-rxjs",
-            "index": "projects/signals-to-from-rxjs/src/index.html",
-            "main": "projects/signals-to-from-rxjs/src/main.ts",
+            "outputPath": "dist/signals-swapi",
+            "index": "projects/signals-swapi/src/index.html",
+            "main": "projects/signals-swapi/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "projects/signals-to-from-rxjs/tsconfig.app.json",
+            "tsConfig": "projects/signals-swapi/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/signals-to-from-rxjs/src/favicon.ico",
-              "projects/signals-to-from-rxjs/src/assets"
+              "projects/signals-swapi/src/favicon.ico",
+              "projects/signals-swapi/src/assets"
             ],
             "styles": [
-              "projects/signals-to-from-rxjs/src/styles.scss"
+              "projects/signals-swapi/src/styles.scss"
             ],
             "scripts": []
           },
@@ -162,10 +162,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "signals-to-from-rxjs:build:production"
+              "browserTarget": "signals-swapi:build:production"
             },
             "development": {
-              "browserTarget": "signals-to-from-rxjs:build:development"
+              "browserTarget": "signals-swapi:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -173,7 +173,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "signals-to-from-rxjs:build"
+            "browserTarget": "signals-swapi:build"
           }
         },
         "test": {
@@ -183,14 +183,14 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "projects/signals-to-from-rxjs/tsconfig.spec.json",
+            "tsConfig": "projects/signals-swapi/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/signals-to-from-rxjs/src/favicon.ico",
-              "projects/signals-to-from-rxjs/src/assets"
+              "projects/signals-swapi/src/favicon.ico",
+              "projects/signals-swapi/src/assets"
             ],
             "styles": [
-              "projects/signals-to-from-rxjs/src/styles.scss"
+              "projects/signals-swapi/src/styles.scss"
             ],
             "scripts": []
           }
@@ -288,6 +288,103 @@
             ],
             "styles": [
               "projects/signals-inject/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "signals-pagination": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/signals-pagination",
+      "sourceRoot": "projects/signals-pagination/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/signals-pagination",
+            "index": "projects/signals-pagination/src/index.html",
+            "main": "projects/signals-pagination/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/signals-pagination/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/signals-pagination/src/favicon.ico",
+              "projects/signals-pagination/src/assets"
+            ],
+            "styles": [
+              "projects/signals-pagination/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "signals-pagination:build:production"
+            },
+            "development": {
+              "browserTarget": "signals-pagination:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "signals-pagination:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/signals-pagination/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/signals-pagination/src/favicon.ico",
+              "projects/signals-pagination/src/assets"
+            ],
+            "styles": [
+              "projects/signals-pagination/src/styles.scss"
             ],
             "scripts": []
           }

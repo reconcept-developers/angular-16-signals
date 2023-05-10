@@ -1,0 +1,16 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  height: 100%;
+  gap: 12px;
+
+  .controls {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+  }
+
+}
