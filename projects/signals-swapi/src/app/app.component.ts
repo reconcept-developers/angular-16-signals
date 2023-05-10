@@ -40,22 +40,22 @@ export class AppComponent {
   ship!: string;
 
   ngOnInit() {
-    this.getShips('').subscribe({
-      next: (results) => {
-        this.results = results;
-      }
-    })
+    this.getShips('')
   }
 
   find() {
-    this.getShips(this.ship).subscribe({
+    this.getShips(this.ship)
+  }
+
+  getShips(ship: string) {
+    this.doShipsCall(ship).subscribe({
       next: (results) => {
         this.results = results;
       }
     })
   }
 
-  getShips(ship: string): Observable<SwShip[]> {
+  doShipsCall(ship: string): Observable<SwShip[]> {
     const query = `?search=${ship}`
     return this.http.get(`https://swapi.dev/api/starships/${query}`).pipe(
       map((response: any) => response.results as any[])
