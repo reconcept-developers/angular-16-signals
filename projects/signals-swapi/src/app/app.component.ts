@@ -48,7 +48,7 @@ export class AppComponent {
   }
 
   find() {
-    this.getShips('').subscribe({
+    this.getShips(this.ship).subscribe({
       next: (results) => {
         this.results = results;
       }
