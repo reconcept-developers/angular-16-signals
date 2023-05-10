@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
@@ -38,8 +38,6 @@ export class AppComponent {
   results: SwShip[] = []
 
   ship!: string;
-  shipQuery = signal('')
-
 
   ngOnInit() {
     this.getShips('').subscribe({
