@@ -10,22 +10,28 @@ const users = [
 ];
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
-  <input [ngModel]="searchInput()" (ngModelChange)="searchUser($event)" placeholder="Search">
+  <main>
+    <h1>Pagination</h1>
+    <input [ngModel]="searchInput()" (ngModelChange)="searchUser($event)" placeholder="Search">
+    
+    <ul>
+      <li *ngFor="let user of paginatedAndFilteredUsers()">{{ user.name }}</li>
+    </ul>
   
-  <ul>
-    <li *ngFor="let user of paginatedAndFilteredUsers()">{{ user.name }}</li>
-  </ul>
-
-  <button (click)="goToPrevPage()">Previous</button>
-  pag. {{ currentPage() }}
-  <button (click)="goToNextPage()">Next</button>
+    <div class="controls">
+      <button (click)="goToPrevPage()">Previous</button>
+      <span>pag. {{ currentPage() }}</span>
+      <button (click)="goToNextPage()">Next</button>
+    </div>
+  </main>
 `,
+  styleUrls: ['./app.component.scss'],
 })
-export class App {
+export class AppComponent {
   readonly firstPage = 1;
 
   itemsPerPage = 2;
