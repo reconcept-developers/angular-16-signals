@@ -10,7 +10,21 @@ interface SwShip {
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+    <main>
+      <h1>Signals RxJS</h1>
+
+      <h2>Find a star wars ship</h2>
+      <input [(ngModel)]="ship"/>
+      <button (click)="find()">Find</button>
+
+      <h2> Results </h2>
+      <div *ngFor="let result of results">
+        {{ result.name }}
+      </div>
+
+    </main>
+  `,
   styleUrls: ['./app.component.scss'],
   imports: [
     FormsModule,
@@ -21,15 +35,26 @@ interface SwShip {
 export class AppComponent {
   http = inject(HttpClient)
 
-  shipQuery = signal('')
-  results = signal<SwShip[]>([])
+  results: SwShip[] = []
 
   ship!: string;
+  shipQuery = signal('')
 
-  constructor() {
+
+  ngOnInit() {
+    this.getShips('').subscribe({
+      next: (results) => {
+        this.results = results;
+      }
+    })
   }
 
   find() {
+    this.getShips('').subscribe({
+      next: (results) => {
+        this.results = results;
+      }
+    })
   }
 
   getShips(ship: string): Observable<SwShip[]> {
